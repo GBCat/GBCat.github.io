@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://gbcat.github.io</id>
     <title>黑猫.live</title>
-    <updated>2021-07-20T03:48:51.317Z</updated>
+    <updated>2021-07-20T03:51:49.673Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://gbcat.github.io"/>
     <link rel="self" href="https://gbcat.github.io/atom.xml"/>
@@ -10,6 +10,24 @@
     <logo>https://gbcat.github.io/images/avatar.png</logo>
     <icon>https://gbcat.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 黑猫.live</rights>
+    <entry>
+        <title type="html"><![CDATA[Windows预览体验计划 页面空白无内容的解决办法]]></title>
+        <id>https://gbcat.github.io/post/3/</id>
+        <link href="https://gbcat.github.io/post/3/">
+        </link>
+        <updated>2021-07-20T03:50:10.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="方法1">方法1</h3>
+<p>打开完整诊断数据选项并重启</p>
+<h3 id="方法2">方法2</h3>
+<p>以管理员身份运行CMD后，输入以下代码按回车</p>
+<pre><code>$path = &quot;HKLM:SOFTWAREMicrosoftWindowsCurrentVersionPoliciesDataCollection&quot;
+# Telemetry level: 1 - basic, 3 - full
+$value = &quot;3&quot;
+New-ItemProperty -Path $path -Name AllowTelemetry -Value $value -Type Dword -Force
+New-ItemProperty -Path $path -Name MaxTelemetryAllowed -Value $value -Type Dword -Force
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[华为快游戏广告接入指南[快速接入]]]></title>
         <id>https://gbcat.github.io/post/2/</id>
