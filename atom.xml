@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://localhost:4000</id>
+    <id>https://gbcat.github.io</id>
     <title>黑猫.live</title>
-    <updated>2021-07-20T03:59:48.364Z</updated>
+    <updated>2021-07-20T05:39:52.237Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="http://localhost:4000"/>
-    <link rel="self" href="http://localhost:4000/atom.xml"/>
+    <link rel="alternate" href="https://gbcat.github.io"/>
+    <link rel="self" href="https://gbcat.github.io/atom.xml"/>
     <subtitle>那些说天空拥有极限的人都从未离开过地面</subtitle>
-    <logo>http://localhost:4000/images/avatar.png</logo>
-    <icon>http://localhost:4000/favicon.ico</icon>
+    <logo>https://gbcat.github.io/images/avatar.png</logo>
+    <icon>https://gbcat.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 黑猫.live</rights>
     <entry>
         <title type="html"><![CDATA[Windows预览体验计划 页面空白无内容的解决办法]]></title>
-        <id>http://localhost:4000/post/3/</id>
-        <link href="http://localhost:4000/post/3/">
+        <id>https://gbcat.github.io/post/3/</id>
+        <link href="https://gbcat.github.io/post/3/">
         </link>
         <updated>2021-07-20T03:50:10.000Z</updated>
         <content type="html"><![CDATA[<h3 id="方法1">方法1</h3>
@@ -30,8 +30,8 @@ New-ItemProperty -Path $path -Name MaxTelemetryAllowed -Value $value -Type Dword
     </entry>
     <entry>
         <title type="html"><![CDATA[华为快游戏广告接入指南[快速接入]]]></title>
-        <id>http://localhost:4000/post/2/</id>
-        <link href="http://localhost:4000/post/2/">
+        <id>https://gbcat.github.io/post/2/</id>
+        <link href="https://gbcat.github.io/post/2/">
         </link>
         <updated>2021-07-20T03:42:00.000Z</updated>
         <content type="html"><![CDATA[<h1 id="版本要求">版本要求</h1>
@@ -177,8 +177,8 @@ export class HuaweiQuickGame extends Component {
     </entry>
     <entry>
         <title type="html"><![CDATA[Cocos接入[穿山甲]+[友盟基础功能]指南]]></title>
-        <id>http://localhost:4000/post/1/</id>
-        <link href="http://localhost:4000/post/1/">
+        <id>https://gbcat.github.io/post/1/</id>
+        <link href="https://gbcat.github.io/post/1/">
         </link>
         <updated>2021-07-20T02:47:39.000Z</updated>
         <content type="html"><![CDATA[<h1 id="cocos接入穿山甲友盟基础功能指南">Cocos接入[穿山甲]+[友盟基础功能]指南</h1>
@@ -204,7 +204,7 @@ export class HuaweiQuickGame extends Component {
 <p><em>注释 🟡代表改文件有修改 🟢代表新增文件</em></p>
 <h2 id="详细修改内容">详细修改内容</h2>
 <p>修改Android Gradle Plugin Version为3.4.3,修改Gradle Version为5.1.1</p>
-<figure data-type="image" tabindex="1"><img src="http://localhost:4000/post-images/1626750808206.webp" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://gbcat.github.io/post-images/1626750808206.webp" alt="" loading="lazy"></figure>
 <p><strong>res/xml/file_paths.xml 🟢</strong></p>
 <p>在对应目录下创建新文件,文件内容如下</p>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
