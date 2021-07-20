@@ -1,0 +1,343 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>华为快游戏广告接入指南[快速接入] | 黑猫.live</title>
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1626752572836">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="华为快游戏广告接入指南[快速接入] | 黑猫.live - Atom Feed" href="http://localhost:4000/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="版本要求
+Cocos Creator – 3.1.1
+支持的广告类型
+
+激励视频
+原生广告
+
+相关参考链接
+
+手动下载快应用加载器
+华为快游戏官方文档
+
+使用文档
+激励视频
+playVideoAd(function callback)
+
+加..." />
+    <meta name="keywords" content="Cocos,SDK" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="http://localhost:4000">
+  <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1626752572836" alt="">
+  </a>
+  <h1 class="site-title">
+    黑猫.live
+  </h1>
+  <p class="site-description">
+    那些说天空拥有极限的人都从未离开过地面
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/GBCat" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              华为快游戏广告接入指南[快速接入]
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-07-20
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+                <a href="http://localhost:4000/tag/bvz-m-dhy/" class="post-tag">
+                  # Cocos
+                </a>
+              
+                <a href="http://localhost:4000/tag/yRFAyXTxg7/" class="post-tag">
+                  # SDK
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="版本要求">版本要求</h1>
+<p>Cocos Creator – 3.1.1</p>
+<h1 id="支持的广告类型">支持的广告类型</h1>
+<ul>
+<li>激励视频</li>
+<li>原生广告</li>
+</ul>
+<h1 id="相关参考链接">相关参考链接</h1>
+<ul>
+<li><a href="https://developer.huawei.com/consumer/cn/doc/development/quickApp-Guides/quickapp-installtool#h1-1575365259108">手动下载快应用加载器</a></li>
+<li><a href="https://developer.huawei.com/consumer/cn/doc/development/quickApp-References/quickgame-api-ad">华为快游戏官方文档</a></li>
+</ul>
+<h1 id="使用文档">使用文档</h1>
+<h2 id="激励视频">激励视频</h2>
+<p><strong>playVideoAd(function callback)</strong></p>
+<blockquote>
+<p>加载并播放激励视频广告</p>
+</blockquote>
+<p>参数</p>
+<p><strong>function callback</strong></p>
+<blockquote>
+<p>监听激励视频完成的回调方法</p>
+</blockquote>
+<p><strong>boolean res</strong></p>
+<blockquote>
+<p>是否要发放激励视频奖励</p>
+</blockquote>
+<p>示例代码</p>
+<pre><code>HuaweiQuickGame.getApp().videoPlay((res) =&gt; {
+    if (res) {
+        //给予用户激励视频奖励
+    }
+});
+</code></pre>
+<h2 id="原生广告">原生广告</h2>
+<p><strong>getNativeData(function callback)</strong></p>
+<blockquote>
+<p>获取一组原生广告数据</p>
+</blockquote>
+<p>参数</p>
+<p><strong>function callback</strong></p>
+<blockquote>
+<p>加载原生广告数据完成回调</p>
+</blockquote>
+<p><strong>json data</strong></p>
+<blockquote>
+<p>返回的原生广告数据</p>
+</blockquote>
+<p><strong>示例代码</strong></p>
+<pre><code>HuaweiQuickGame.getApp().getNativeData((data: any) =&gt; {
+    
+});
+</code></pre>
+<h1 id="全部代码">全部代码</h1>
+<pre><code>import { _decorator, Component, Node } from 'cc';
+const { ccclass, property } = _decorator;
+@ccclass('HuaweiQuickGame')
+export class HuaweiQuickGame extends Component {
+    static _app: HuaweiQuickGame | null = null;
+    static getApp() {
+        if (!HuaweiQuickGame._app) {
+            HuaweiQuickGame._app = new HuaweiQuickGame();
+        }
+        return HuaweiQuickGame._app;
+    }
+    //原生广告ID
+    nativeId: string = 'x2e3b5w2cy';
+    //激励视频广告ID
+    videoId: string = 'd5lutjqgdh';
+    nativeObject: any = null;
+    nativeCall: any = null;
+    /**
+     * 获取一组原生数据
+     * @param id 原生广告ID
+     * @param call 获取数据回调
+     */
+    getNativeData(call: Function = function () { }) {
+        let qg = window.qg;
+        if (!this.nativeObject) {
+            this.nativeObject = qg.createNativeAd({
+                adUnitId: this.nativeId,
+                success: (code: any) =&gt; {
+                    console.log(&quot;loadNativeAd loadNativeAd : success&quot;);
+                },
+                fail: (data: any, code: any) =&gt; {
+                    console.log(&quot;loadNativeAd loadNativeAd fail: &quot; + data + &quot;,&quot; + code);
+                },
+                complete: () =&gt; {
+                    console.log(&quot;loadNativeAd loadNativeAd : complete&quot;);
+                }
+            });
+            this.nativeObject.onLoad((data: any) =&gt; {
+                this.nativeCall(data.adList[0]);
+            });
+        }
+        this.nativeCall = call;
+        this.nativeObject.load();
+    
+    }
+    setNativeShow(data: any) {
+        if (this.nativeObject) {
+            this.nativeObject.reportAdShow({ adId: data.adId });
+        }
+    }
+    setNativeClick(data: any) {
+        if (this.nativeObject) {
+            this.nativeObject.reportAdClick({ adId: data.adId });
+        }
+    }
+    videoCall: any = null;
+    videoObject: any = null;
+    playVideoAd(call: Function = function () { }) {
+        let qg = window.qg;
+        if (!this.videoObject) {
+            this.videoObject = qg.createRewardedVideoAd({
+                adUnitId: this.videoId,
+                success: (code: any) =&gt; {
+                    console.log(&quot;ad demo : loadAndShowVideoAd createRewardedVideoAd: success&quot;);
+                },
+                fail: (data: any, code: any) =&gt; {
+                    console.log(&quot;ad demo : loadAndShowVideoAd createRewardedVideoAd fail: &quot; + data + &quot;,&quot; + code);
+                },
+                complete: () =&gt; {
+                    console.log(&quot;ad demo : loadAndShowVideoAd createRewardedVideoAd complete&quot;);
+                }
+            });
+            this.videoObject.onLoad(() =&gt; {
+                this.videoObject.show();
+            });
+            this.videoObject.onClose((res: any) =&gt; {
+                this.videoCall(res.isEnded);
+                console.log('ad onClose: ' + res.isEnded)
+            })
+        }
+        this.videoCall = call;
+        this.videoObject.load();
+    }
+}
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E7%89%88%E6%9C%AC%E8%A6%81%E6%B1%82">版本要求</a></li>
+<li><a href="#%E6%94%AF%E6%8C%81%E7%9A%84%E5%B9%BF%E5%91%8A%E7%B1%BB%E5%9E%8B">支持的广告类型</a></li>
+<li><a href="#%E7%9B%B8%E5%85%B3%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5">相关参考链接</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3">使用文档</a>
+<ul>
+<li><a href="#%E6%BF%80%E5%8A%B1%E8%A7%86%E9%A2%91">激励视频</a></li>
+<li><a href="#%E5%8E%9F%E7%94%9F%E5%B9%BF%E5%91%8A">原生广告</a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%A8%E9%83%A8%E4%BB%A3%E7%A0%81">全部代码</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="http://localhost:4000/post/1/">
+              <h3 class="post-title">
+                Cocos接入[穿山甲]+[友盟基础功能]指南
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

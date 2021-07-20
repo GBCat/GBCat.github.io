@@ -1,19 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://gbcat.github.io</id>
+    <id>http://localhost:4000</id>
     <title>黑猫.live</title>
-    <updated>2021-07-20T03:30:28.042Z</updated>
+    <updated>2021-07-20T03:42:55.869Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://gbcat.github.io"/>
-    <link rel="self" href="https://gbcat.github.io/atom.xml"/>
+    <link rel="alternate" href="http://localhost:4000"/>
+    <link rel="self" href="http://localhost:4000/atom.xml"/>
     <subtitle>那些说天空拥有极限的人都从未离开过地面</subtitle>
-    <logo>https://gbcat.github.io/images/avatar.png</logo>
-    <icon>https://gbcat.github.io/favicon.ico</icon>
+    <logo>http://localhost:4000/images/avatar.png</logo>
+    <icon>http://localhost:4000/favicon.ico</icon>
     <rights>All rights reserved 2021, 黑猫.live</rights>
     <entry>
+        <title type="html"><![CDATA[华为快游戏广告接入指南[快速接入]]]></title>
+        <id>http://localhost:4000/post/2/</id>
+        <link href="http://localhost:4000/post/2/">
+        </link>
+        <updated>2021-07-20T03:42:00.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="版本要求">版本要求</h1>
+<p>Cocos Creator – 3.1.1</p>
+<h1 id="支持的广告类型">支持的广告类型</h1>
+<ul>
+<li>激励视频</li>
+<li>原生广告</li>
+</ul>
+<h1 id="相关参考链接">相关参考链接</h1>
+<ul>
+<li><a href="https://developer.huawei.com/consumer/cn/doc/development/quickApp-Guides/quickapp-installtool#h1-1575365259108">手动下载快应用加载器</a></li>
+<li><a href="https://developer.huawei.com/consumer/cn/doc/development/quickApp-References/quickgame-api-ad">华为快游戏官方文档</a></li>
+</ul>
+<h1 id="使用文档">使用文档</h1>
+<h2 id="激励视频">激励视频</h2>
+<p><strong>playVideoAd(function callback)</strong></p>
+<blockquote>
+<p>加载并播放激励视频广告</p>
+</blockquote>
+<p>参数</p>
+<p><strong>function callback</strong></p>
+<blockquote>
+<p>监听激励视频完成的回调方法</p>
+</blockquote>
+<p><strong>boolean res</strong></p>
+<blockquote>
+<p>是否要发放激励视频奖励</p>
+</blockquote>
+<p>示例代码</p>
+<pre><code>HuaweiQuickGame.getApp().videoPlay((res) =&gt; {
+    if (res) {
+        //给予用户激励视频奖励
+    }
+});
+</code></pre>
+<h2 id="原生广告">原生广告</h2>
+<p><strong>getNativeData(function callback)</strong></p>
+<blockquote>
+<p>获取一组原生广告数据</p>
+</blockquote>
+<p>参数</p>
+<p><strong>function callback</strong></p>
+<blockquote>
+<p>加载原生广告数据完成回调</p>
+</blockquote>
+<p><strong>json data</strong></p>
+<blockquote>
+<p>返回的原生广告数据</p>
+</blockquote>
+<p><strong>示例代码</strong></p>
+<pre><code>HuaweiQuickGame.getApp().getNativeData((data: any) =&gt; {
+    
+});
+</code></pre>
+<h1 id="全部代码">全部代码</h1>
+<pre><code>import { _decorator, Component, Node } from 'cc';
+const { ccclass, property } = _decorator;
+@ccclass('HuaweiQuickGame')
+export class HuaweiQuickGame extends Component {
+    static _app: HuaweiQuickGame | null = null;
+    static getApp() {
+        if (!HuaweiQuickGame._app) {
+            HuaweiQuickGame._app = new HuaweiQuickGame();
+        }
+        return HuaweiQuickGame._app;
+    }
+    //原生广告ID
+    nativeId: string = 'x2e3b5w2cy';
+    //激励视频广告ID
+    videoId: string = 'd5lutjqgdh';
+    nativeObject: any = null;
+    nativeCall: any = null;
+    /**
+     * 获取一组原生数据
+     * @param id 原生广告ID
+     * @param call 获取数据回调
+     */
+    getNativeData(call: Function = function () { }) {
+        let qg = window.qg;
+        if (!this.nativeObject) {
+            this.nativeObject = qg.createNativeAd({
+                adUnitId: this.nativeId,
+                success: (code: any) =&gt; {
+                    console.log(&quot;loadNativeAd loadNativeAd : success&quot;);
+                },
+                fail: (data: any, code: any) =&gt; {
+                    console.log(&quot;loadNativeAd loadNativeAd fail: &quot; + data + &quot;,&quot; + code);
+                },
+                complete: () =&gt; {
+                    console.log(&quot;loadNativeAd loadNativeAd : complete&quot;);
+                }
+            });
+            this.nativeObject.onLoad((data: any) =&gt; {
+                this.nativeCall(data.adList[0]);
+            });
+        }
+        this.nativeCall = call;
+        this.nativeObject.load();
+    
+    }
+    setNativeShow(data: any) {
+        if (this.nativeObject) {
+            this.nativeObject.reportAdShow({ adId: data.adId });
+        }
+    }
+    setNativeClick(data: any) {
+        if (this.nativeObject) {
+            this.nativeObject.reportAdClick({ adId: data.adId });
+        }
+    }
+    videoCall: any = null;
+    videoObject: any = null;
+    playVideoAd(call: Function = function () { }) {
+        let qg = window.qg;
+        if (!this.videoObject) {
+            this.videoObject = qg.createRewardedVideoAd({
+                adUnitId: this.videoId,
+                success: (code: any) =&gt; {
+                    console.log(&quot;ad demo : loadAndShowVideoAd createRewardedVideoAd: success&quot;);
+                },
+                fail: (data: any, code: any) =&gt; {
+                    console.log(&quot;ad demo : loadAndShowVideoAd createRewardedVideoAd fail: &quot; + data + &quot;,&quot; + code);
+                },
+                complete: () =&gt; {
+                    console.log(&quot;ad demo : loadAndShowVideoAd createRewardedVideoAd complete&quot;);
+                }
+            });
+            this.videoObject.onLoad(() =&gt; {
+                this.videoObject.show();
+            });
+            this.videoObject.onClose((res: any) =&gt; {
+                this.videoCall(res.isEnded);
+                console.log('ad onClose: ' + res.isEnded)
+            })
+        }
+        this.videoCall = call;
+        this.videoObject.load();
+    }
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Cocos接入[穿山甲]+[友盟基础功能]指南]]></title>
-        <id>https://gbcat.github.io/post/1/</id>
-        <link href="https://gbcat.github.io/post/1/">
+        <id>http://localhost:4000/post/1/</id>
+        <link href="http://localhost:4000/post/1/">
         </link>
         <updated>2021-07-20T02:47:39.000Z</updated>
         <content type="html"><![CDATA[<h1 id="cocos接入穿山甲友盟基础功能指南">Cocos接入[穿山甲]+[友盟基础功能]指南</h1>
@@ -39,7 +186,7 @@
 <p><em>注释 🟡代表改文件有修改 🟢代表新增文件</em></p>
 <h2 id="详细修改内容">详细修改内容</h2>
 <p>修改Android Gradle Plugin Version为3.4.3,修改Gradle Version为5.1.1</p>
-<figure data-type="image" tabindex="1"><img src="https://gbcat.github.io/post-images/1626750808206.webp" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="http://localhost:4000/post-images/1626750808206.webp" alt="" loading="lazy"></figure>
 <p><strong>res/xml/file_paths.xml 🟢</strong></p>
 <p>在对应目录下创建新文件,文件内容如下</p>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
